@@ -20,8 +20,6 @@ public class Customer implements Serializable
 
     private double price;
     
-    private DiscountType dt;
-    
     private List<DiscountType> dts = new ArrayList<>();
     
     public Long getId()
