@@ -5,15 +5,21 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
 @Entity
-public class DiscountQuantity implements Serializable
+public class DiscountQuantity extends DiscountType implements Serializable
 {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    public int quantityForDiscount = 3;
+
+    public double discount = 0.2; //20% on all if quantity is 3 or more 
 
     public Long getId()
     {
@@ -54,5 +60,11 @@ public class DiscountQuantity implements Serializable
     {
         return "entity.DiscountQuantity[ id=" + id + " ]";
     }
-    
+
+    @Override
+    public double calcDiscount(double priceItem, int quantity)
+    {
+        return quantity >= quantityForDiscount ? priceItem * quantity * discount : 0;
+    }
+
 }
