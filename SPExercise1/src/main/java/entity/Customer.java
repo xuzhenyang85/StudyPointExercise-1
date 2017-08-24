@@ -2,13 +2,12 @@
 package entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-
 
 @Entity
 public class Customer implements Serializable
@@ -19,6 +18,12 @@ public class Customer implements Serializable
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private double price;
+    
+    private DiscountType dt;
+    
+    private List<DiscountType> dts = new ArrayList<>();
+    
     public Long getId()
     {
         return id;
@@ -29,6 +34,26 @@ public class Customer implements Serializable
         this.id = id;
     }
 
+    public double getPrice(double pricePerItem, int quantity)
+    {
+        double bestDiscount = 0;
+        for (int i = 0; i < dts.size(); i++)
+        {
+           if(dts.get(i).calcDiscount(pricePerItem, quantity) > bestDiscount){
+               bestDiscount = dts.get(i).calcDiscount(pricePerItem, quantity);
+           }
+        }
+        return (pricePerItem * quantity) - bestDiscount;
+    }
+    
+    public void setPrice(double price){
+        this.price = price;
+    }
+    
+    public void addDiscountType(DiscountType dts){
+        this.dts.add(dts);
+    }
+    
     @Override
     public int hashCode()
     {
