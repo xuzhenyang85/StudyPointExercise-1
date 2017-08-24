@@ -11,3 +11,4 @@
 - Ved at bruge Inheritance Single-table Strategy, oprettet databasen en ny kolonne, DTYPE, den bruges til at definere typer af superclass/subclass
 
 - Ved at bruge InheritanceType.JOIN Strategy genererer databasen separat tabeller
+
