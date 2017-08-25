@@ -1,4 +1,3 @@
-
 package entity;
 
 import java.io.Serializable;
@@ -18,10 +17,11 @@ public class Customer implements Serializable
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private double price;
-    
-    private List<DiscountType> dts = new ArrayList<>();
-    
+    private String name;
+    private String email;
+
+    private List<Customer> allCustomers = new ArrayList<>();
+
     public Long getId()
     {
         return id;
@@ -32,26 +32,31 @@ public class Customer implements Serializable
         this.id = id;
     }
 
-    public double getPrice(double pricePerItem, int quantity)
+    public String getName()
     {
-        double bestDiscount = 0;
-        for (int i = 0; i < dts.size(); i++)
-        {
-           if(dts.get(i).calcDiscount(pricePerItem, quantity) > bestDiscount){
-               bestDiscount = dts.get(i).calcDiscount(pricePerItem, quantity);
-           }
-        }
-        return (pricePerItem * quantity) - bestDiscount;
+        return name;
     }
-    
-    public void setPrice(double price){
-        this.price = price;
+
+    public void setName(String name)
+    {
+        this.name = name;
     }
-    
-    public void addDiscountType(DiscountType dts){
-        this.dts.add(dts);
+
+    public String getEmail()
+    {
+        return email;
     }
-    
+
+    public void setEmail(String email)
+    {
+        this.email = email;
+    }
+
+    public List<Customer> getAllCustomers()
+    {
+        return allCustomers;
+    }
+
     @Override
     public int hashCode()
     {
@@ -81,5 +86,5 @@ public class Customer implements Serializable
     {
         return "entity.Customer[ id=" + id + " ]";
     }
-    
+
 }
