@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `jpa11` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `jpa11`;
 -- MySQL dump 10.13  Distrib 5.7.12, for osx10.9 (x86_64)
 --
 -- Host: 127.0.0.1    Database: jpa11
@@ -131,4 +133,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-08-25 15:28:33
+-- Dump completed on 2017-08-25 15:48:30
