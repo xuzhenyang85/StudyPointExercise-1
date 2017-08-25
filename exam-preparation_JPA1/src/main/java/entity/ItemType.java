@@ -2,13 +2,17 @@
 package entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 
 @Entity
+@Table(name ="ItemType")
 public class ItemType implements Serializable
 {
 
@@ -20,6 +24,8 @@ public class ItemType implements Serializable
     private String name;
     private String description;
     private double price;
+    
+    private List<OrderLine> orderlines = new ArrayList<>();
     
     public ItemType(){
         
@@ -100,7 +106,8 @@ public class ItemType implements Serializable
     @Override
     public String toString()
     {
-        return "entity.ItemType[ id=" + id + " ]";
+        return "ItemType{" + "id=" + id + ", name=" + name + ", description=" + description + ", price=" + price + '}';
     }
-    
+
+ 
 }

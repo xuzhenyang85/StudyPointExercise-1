@@ -1,4 +1,3 @@
-
 package entity;
 
 import java.io.Serializable;
@@ -6,8 +5,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "OrderLine")
 public class OrderLine implements Serializable
 {
 
@@ -15,9 +16,21 @@ public class OrderLine implements Serializable
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private int quantity;
     
+    private ProductOrder productOrder;
+    private ItemType itemtype;
+    
+    public OrderLine()
+    {
+
+    }
+
+    public OrderLine(int quantity)
+    {
+        this.quantity = quantity;
+    }
+
     public Long getId()
     {
         return id;
@@ -38,7 +51,6 @@ public class OrderLine implements Serializable
         this.quantity = quantity;
     }
 
-    
     @Override
     public int hashCode()
     {
@@ -66,7 +78,7 @@ public class OrderLine implements Serializable
     @Override
     public String toString()
     {
-        return "entity.OrderLine[ id=" + id + " ]";
+        return "OrderLine{" + "id=" + id + ", quantity=" + quantity + '}';
     }
-    
+
 }

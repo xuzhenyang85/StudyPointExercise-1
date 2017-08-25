@@ -7,8 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="Customer") // changed name to Customer
 public class Customer implements Serializable
 {
 
@@ -20,7 +23,18 @@ public class Customer implements Serializable
     private String name;
     private String email;
 
-    private List<Customer> allCustomers = new ArrayList<>();
+    @OneToMany(mappedBy = "customer") // who is owner? ingen mellemtabel
+    private List<ProductOrder> orders = new ArrayList<>();
+
+    public Customer(){
+        
+    }
+    
+    public Customer(String name, String email)
+    {
+        this.name = name;
+        this.email = email;
+    }
 
     public Long getId()
     {
@@ -52,10 +66,22 @@ public class Customer implements Serializable
         this.email = email;
     }
 
-    public List<Customer> getAllCustomers()
+    public List<ProductOrder> getOrders()
     {
-        return allCustomers;
+        return orders;
     }
+
+    public void setOrders(List<ProductOrder> orders)
+    {
+        this.orders = orders;
+    }
+    
+    public void addOrder(ProductOrder o){
+        
+        this.orders.add(o);
+    }
+    
+   
 
     @Override
     public int hashCode()
@@ -84,7 +110,8 @@ public class Customer implements Serializable
     @Override
     public String toString()
     {
-        return "entity.Customer[ id=" + id + " ]";
+        return "Customer{" + "id=" + id + ", name=" + name + ", email=" + email + ", orders=" + orders + '}';
     }
+
 
 }

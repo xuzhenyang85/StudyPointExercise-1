@@ -1,28 +1,37 @@
-
 package entity;
 
-import entity.Customer;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
-
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
-public class Order implements Serializable
+@Table(name = "Orders")
+public class ProductOrder implements Serializable
 {
-    @OneToOne(mappedBy = "order")
-    private Customer customer;
-    private List<Customer> customers;
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ManyToOne
+    @JoinColumn(name = "Customer_ID")
+    private Customer customer;
+
+    @OneToMany
+    private List<OrderLine> orderLines = new ArrayList<>();
+    
+    public ProductOrder(){
+        
+    }
+    
     public Long getId()
     {
         return id;
@@ -31,6 +40,16 @@ public class Order implements Serializable
     public void setId(Long id)
     {
         this.id = id;
+    }
+
+    public Customer getC()
+    {
+        return customer;
+    }
+
+    public void addCust(Customer c)
+    {
+        this.customer = c;
     }
 
     @Override
@@ -45,11 +64,11 @@ public class Order implements Serializable
     public boolean equals(Object object)
     {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Order))
+        if (!(object instanceof ProductOrder))
         {
             return false;
         }
-        Order other = (Order) object;
+        ProductOrder other = (ProductOrder) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)))
         {
             return false;
@@ -60,7 +79,8 @@ public class Order implements Serializable
     @Override
     public String toString()
     {
-        return "entity.Order[ id=" + id + " ]";
+        return "Order: " + "OrderId: " + id +'}';
     }
-    
+
+
 }

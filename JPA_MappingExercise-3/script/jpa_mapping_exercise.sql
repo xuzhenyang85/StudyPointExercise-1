@@ -18,7 +18,8 @@
 --
 -- Table structure for table `CUSTOMER`
 --
-
+CREATE SCHEMA `spexercise1`;
+USE `spexercise1`;
 DROP TABLE IF EXISTS `CUSTOMER`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
