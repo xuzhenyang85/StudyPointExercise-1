@@ -17,12 +17,14 @@ public interface FacadeCustomerInterface
     public List<Customer> getCustomers();
     //order
     public ProductOrder addOrder(ProductOrder o);
-    public Customer addOrderByCustomer(ProductOrder o, Customer c);
+    public Customer addOrderByCustomer(ProductOrder o, Customer c); //
     public ProductOrder getOrder(Long id);
     //item
     public ItemType addItemType(ItemType i);
+    public ItemType getItemType(Long id);
+    
     //orderline
     public OrderLine addOrderLine(OrderLine o);
     //totalprice
-    public double totalPrice (Long id);
+    public double totalPrice (ProductOrder po);
 }

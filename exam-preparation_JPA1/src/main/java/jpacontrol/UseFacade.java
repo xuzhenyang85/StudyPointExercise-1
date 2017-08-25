@@ -35,23 +35,38 @@ public class UseFacade
         }
         
         //create an order
-        
         System.out.println("Create an order: " + facade.addOrder(new ProductOrder()));
         
         //add an order by a customer
-        System.out.println("Create an order by a customer" + facade.addOrderByCustomer(new ProductOrder(), new Customer()));
+        Customer c = facade.getCustomer(1l);
+        c.setEmail("newemail@somemail.dk");
+        System.out.println("Create an order by a customer" + facade.addOrderByCustomer(new ProductOrder(), c));
         
         //find an order
         System.out.println("find an order: " + facade.getOrder(1l));
         
         //create  an ItemType
         System.out.println("create an ItemType: "+ facade.addItemType(new ItemType("TV","LG 55' HD fladskærm",8888)));
+        System.out.println("create an ItemType: "+ facade.addItemType(new ItemType("Iphone","Iphone 8",5899)));
+        System.out.println("create an ItemType: "+ facade.addItemType(new ItemType("Sko","ECCO sko",800)));
+        //create orderLines
+        ProductOrder pu1 = facade.getOrder(2l);
+        ItemType it1 = facade.getItemType(1l);
+        System.out.println("create an ORDERLINE: " + facade.addOrderLine(new OrderLine(2, pu1, it1)));
         
-        //create an orderLine
-        System.out.println("create an orderLine: " + facade.addOrderLine(new OrderLine()));
+        ProductOrder pu2 = facade.getOrder(2l);
+        ItemType it2 = facade.getItemType(2l);
+        System.out.println("create an ORDERLINE: " + facade.addOrderLine(new OrderLine(2, pu2, it2)));
+        
+        ProductOrder pu3 = facade.getOrder(2l);
+        ItemType it3 = facade.getItemType(3l);
+        System.out.println("create an ORDERLINE: " + facade.addOrderLine(new OrderLine(2, pu1, it3)));
+        
         
         //find the total price of an order
-        
+        ProductOrder order1 = facade.getOrder(2l);
+        double totalprice = facade.totalPrice(order1);
+        System.out.println("Total price: " + totalprice);
         
     }
 }

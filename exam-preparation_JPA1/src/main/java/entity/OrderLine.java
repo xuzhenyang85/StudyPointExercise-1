@@ -30,9 +30,11 @@ public class OrderLine implements Serializable
 
     }
 
-    public OrderLine(int quantity)
+    public OrderLine(int quantity, ProductOrder productOrder, ItemType itemtype)
     {
         this.quantity = quantity;
+        this.productOrder = productOrder;
+        this.itemtype = itemtype;
     }
 
     public Long getId()
@@ -53,6 +55,16 @@ public class OrderLine implements Serializable
     public void setQuantity(int quantity)
     {
         this.quantity = quantity;
+    }
+
+    public ItemType getItemtype()
+    {
+        return itemtype;
+    }
+
+    public void setItemtype(ItemType itemtype)
+    {
+        this.itemtype = itemtype;
     }
 
     @Override

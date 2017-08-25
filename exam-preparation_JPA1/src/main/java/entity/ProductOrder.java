@@ -16,6 +16,7 @@ import javax.persistence.Table;
 @Table(name = "Orders")
 public class ProductOrder implements Serializable
 {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,13 +28,12 @@ public class ProductOrder implements Serializable
 
     @OneToMany(mappedBy = "productOrder")
     private List<OrderLine> orderLines = new ArrayList<>();
-    
-    private double totalPrice;
-    
-    public ProductOrder(){
-        
+
+    public ProductOrder()
+    {
+
     }
-    
+
     public Long getId()
     {
         return id;
@@ -54,17 +54,15 @@ public class ProductOrder implements Serializable
         this.customer = c;
     }
 
-    public double getTotalPrice()
+    public List<OrderLine> getOrderLines()
     {
-        return totalPrice;
+        return orderLines;
     }
 
-    public void setTotalPrice(double totalPrice)
+    public void setOrderLines(List<OrderLine> orderLines)
     {
-        this.totalPrice = totalPrice;
+        this.orderLines = orderLines;
     }
-    
-    
 
     @Override
     public int hashCode()
@@ -88,12 +86,6 @@ public class ProductOrder implements Serializable
             return false;
         }
         return true;
-    }
-
-    @Override
-    public String toString()
-    {
-        return "ProductOrder{" + "id=" + id + ", totalPrice=" + totalPrice + '}';
     }
 
 

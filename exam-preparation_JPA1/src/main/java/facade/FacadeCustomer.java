@@ -161,27 +161,7 @@ public class FacadeCustomer implements FacadeCustomerInterface
             em.close();
         }
     }
-
-    @Override
-    public double totalPrice(Long id)
-    {
-        EntityManager em = emf.createEntityManager();
-        try
-        {
-            em.getTransaction().begin();
-            
-            int quantity = em.find(OrderLine.class, id).getQuantity();
-            double price = em.find(ItemType.class, id).getPrice();
-            double totalPrice = quantity * price;
-            
-            em.getTransaction().commit();
-            return totalPrice;
-        } finally
-        {
-            em.close();
-        }
-    }
-
+    
     @Override
     public Customer addOrderByCustomer(ProductOrder o, Customer cust)
     {
@@ -192,7 +172,7 @@ public class FacadeCustomer implements FacadeCustomerInterface
             
             cust.addOrder(o);
             o.addCust(cust);
-            em.merge(o);
+            em.persist(o);
             em.merge(cust);
             
             em.getTransaction().commit();
@@ -202,5 +182,49 @@ public class FacadeCustomer implements FacadeCustomerInterface
             em.close();
         }
     }
+
+    @Override
+    public ItemType getItemType(Long id)
+    {
+        EntityManager em = emf.createEntityManager();
+        try
+        {
+            em.getTransaction().begin();
+            ItemType i = em.find(ItemType.class, id);
+            em.getTransaction().commit();
+            return i;
+        } finally
+        {
+            em.close();
+        }
+    }
+    
+    @Override
+    public double totalPrice(ProductOrder po)
+    {
+        EntityManager em = emf.createEntityManager();
+        try
+        {
+            em.getTransaction().begin();
+            
+            List<OrderLine> orderlines =  po.getOrderLines();
+            
+            double totalprice = 0;
+            
+            for (OrderLine orderline : orderlines)
+            {
+                int quantity = orderline.getQuantity();
+                double itemprice = orderline.getItemtype().getPrice();
+                totalprice += quantity * itemprice;
+            }
+            em.getTransaction().commit();
+            
+            return totalprice;
+        } finally
+        {
+            em.close();
+        }
+    }
+
 
 }
