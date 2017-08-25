@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `spexercise1` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `spexercise1`;
 -- MySQL dump 10.13  Distrib 5.7.12, for osx10.9 (x86_64)
 --
 -- Host: 127.0.0.1    Database: spexercise1
@@ -18,8 +20,7 @@
 --
 -- Table structure for table `CUSTOMER`
 --
-CREATE SCHEMA `spexercise1`;
-USE `spexercise1`;
+
 DROP TABLE IF EXISTS `CUSTOMER`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -152,4 +153,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-08-25 10:02:23
+-- Dump completed on 2017-08-25 15:55:54
