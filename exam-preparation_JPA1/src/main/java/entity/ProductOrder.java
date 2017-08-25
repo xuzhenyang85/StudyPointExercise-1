@@ -25,8 +25,10 @@ public class ProductOrder implements Serializable
     @JoinColumn(name = "Customer_ID")
     private Customer customer;
 
-    @OneToMany
+    @OneToMany(mappedBy = "productOrder")
     private List<OrderLine> orderLines = new ArrayList<>();
+    
+    private double totalPrice;
     
     public ProductOrder(){
         
@@ -51,6 +53,18 @@ public class ProductOrder implements Serializable
     {
         this.customer = c;
     }
+
+    public double getTotalPrice()
+    {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(double totalPrice)
+    {
+        this.totalPrice = totalPrice;
+    }
+    
+    
 
     @Override
     public int hashCode()
@@ -79,7 +93,7 @@ public class ProductOrder implements Serializable
     @Override
     public String toString()
     {
-        return "Order: " + "OrderId: " + id +'}';
+        return "ProductOrder{" + "id=" + id + ", totalPrice=" + totalPrice + '}';
     }
 
 

@@ -50,5 +50,8 @@ public class UseFacade
         //create an orderLine
         System.out.println("create an orderLine: " + facade.addOrderLine(new OrderLine()));
         
+        //find the total price of an order
+        
+        
     }
 }

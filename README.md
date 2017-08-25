@@ -3,6 +3,9 @@
 
 ##JPA_MappingExercise-3
 
+[a link](https://github.com/xuzhenyang85/StudyPointExercise-1/blob/master/JPA_MappingExercise-3/script/jpa_mapping_exercise.sql)
+Find jpa_mapping_exercise.sql i JPA_MappingExercise-3/script
+
 4) 
 
 
@@ -11,4 +14,5 @@
 - Ved at bruge Inheritance Single-table Strategy, oprettet databasen en ny kolonne, DTYPE, den bruges til at definere typer af superclass/subclass
 
 - Ved at bruge InheritanceType.JOIN Strategy genererer databasen separat tabeller
+
 
