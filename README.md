@@ -3,8 +3,7 @@
 
 ##JPA_MappingExercise-3
 
-[Hent sql script](https://github.com/xuzhenyang85/StudyPointExercise-1/blob/master/JPA_MappingExercise-3/script/jpa_mapping_exercise.sql)
-Find jpa_mapping_exercise.sql i JPA_MappingExercise-3/script
+[Hent sql script her](https://github.com/xuzhenyang85/StudyPointExercise-1/blob/master/JPA_MappingExercise-3/script/jpa_mapping_exercise.sql)
 
 4) 
 
