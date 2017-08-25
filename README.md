@@ -5,6 +5,8 @@
 
 [Sql script 1](https://github.com/xuzhenyang85/StudyPointExercise-1/blob/master/JPA_MappingExercise-3/script/jpa_mapping_exercise.sql)
 
+[Sql script 2](https://github.com/xuzhenyang85/StudyPointExercise-1/blob/master/exam-preparation_JPA1/scripts/exam_preparation_JPA1.sql)
+
 4) 
 
 
